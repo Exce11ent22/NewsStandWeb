@@ -13,21 +13,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.HashMap;
 
 @WebServlet(name = "add", urlPatterns = {"/add"})
 public class AddItemsServlet extends HttpServlet {
 
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    String type = req.getParameter("type");
+    String typeString = req.getParameter("type");
+    ItemType type = (typeString != null) ? ItemType.getTypeFromTypeNumber(Integer.parseInt(typeString)) : null;
+    String form = (type != null) ? ItemHtmlFormBuilder.getForm(type) : null;
     ItemType[] types = ItemType.values();
-    req.setAttribute("types", types);
-    if (type == null) {
-      getServletContext().getRequestDispatcher("/add.jsp").forward(req, resp);
-    }
-    String form = ItemHtmlFormBuilder.getForm(ItemType.getTypeFromTypeNumber(Integer.parseInt(type)));
     req.setAttribute("form", form);
-    getServletContext().getRequestDispatcher("/addForm.jsp").forward(req, resp);
+    req.setAttribute("type", type);
+    req.setAttribute("types", types);
+    getServletContext().getRequestDispatcher("/add.jsp").forward(req, resp);
   }
 
   @Override
@@ -50,4 +50,5 @@ public class AddItemsServlet extends HttpServlet {
     }
     resp.sendRedirect(getServletContext().getContextPath() + "/add");
   }
+
 }

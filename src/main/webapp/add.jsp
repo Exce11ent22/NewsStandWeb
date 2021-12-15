@@ -15,16 +15,28 @@
   </style>
 </head>
 <body class="container">
+
+<jsp:include page="patterns/navbar.jsp" />
+
 <h1>ACCEPTANCE OF GOODS</h1>
 
 <div>
   <c:forEach items="${types}" var="type">
-    <a class="btn btn-primary mb-3" href="${pageContext.request.contextPath}/add?type=${type.getTypeNumber()}">Add ${type.getItemClass().getSimpleName()}</a><br>
+    <a class="btn btn-warning mb-3" href="${pageContext.request.contextPath}/add?type=${type.getTypeNumber()}">Add ${type.getItemClass().getSimpleName()}</a>
   </c:forEach>
+
+  <c:if test="${type != null}" >
+    <h3>Adding ${type.getItemClass().getSimpleName()}</h3>
+  </c:if>
+
+  <c:if test="${form != null}">
+    <form action="${pageContext.request.contextPath}/add" method="post">
+      <%= (String) request.getAttribute("form") %>
+      <input type="number" name="amount" placeholder="How match?" required><br>
+      <input class="btn btn-success" type="submit" value="Add">
+    </form>
+  </c:if>
 </div>
 
-<form class="mb-3" action="${pageContext.request.contextPath}/">
-  <input class="btn btn-warning" type="submit" value="Back">
-</form>
 </body>
 </html>

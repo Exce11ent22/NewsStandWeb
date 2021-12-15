@@ -10,6 +10,7 @@ import java.util.Set;
 public class ItemHtmlFormBuilder {
 
   public static String getForm(ItemType type){
+    if (type == null) return null;
     Item item = ItemFactory.createEmptyItem(type);
     Set<ItemFields> itemFields = item.getItemFields();
     StringBuilder stringBuilder = new StringBuilder();

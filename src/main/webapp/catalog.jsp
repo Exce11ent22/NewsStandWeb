@@ -15,10 +15,10 @@
   </style>
 </head>
 <body class="container">
+
+<jsp:include page="patterns/navbar.jsp" />
+
 <h1>ITEMS REPOSITORY</h1>
-<form action="${pageContext.request.contextPath}/">
-  <input class="btn btn-warning" type="submit" value="Back">
-</form>
 <div>
   <table class="table">
     <tr>

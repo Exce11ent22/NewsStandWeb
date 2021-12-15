@@ -16,11 +16,10 @@
 </head>
 
 <body class="container">
-<h1>SALE OF GOODS</h1>
 
-<form action="${pageContext.request.contextPath}/">
-  <input class="btn btn-warning" type="submit" value="Back">
-</form>
+<jsp:include page="patterns/navbar.jsp" />
+
+<h1>SALE OF GOODS</h1>
 
 <div>
   <table class="table">
