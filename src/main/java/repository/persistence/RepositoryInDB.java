@@ -3,7 +3,6 @@ package repository.persistence;
 import entity.ItemFactory;
 import entity.ItemType;
 import entity.Item;
-import lombok.Getter;
 import repository.Repository;
 
 import java.sql.*;
@@ -12,7 +11,6 @@ import java.util.Date;
 
 public class RepositoryInDB implements Repository<Item, Long> {
 
-//  private final BasicConnectionPool connectionManager = BasicConnectionPool.getInstance();
   private final ConnectionManager connectionManager = new ConnectionManager();
   private static RepositoryInDB instance;
 

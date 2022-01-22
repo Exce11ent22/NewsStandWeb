@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.HashMap;
 
 @WebServlet(name = "add", urlPatterns = {"/add"})
 public class AddItemsServlet extends HttpServlet {
@@ -32,8 +31,6 @@ public class AddItemsServlet extends HttpServlet {
 
   @Override
   protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    System.out.println("<" + req.getParameter("release_date") + ">");
-
     String type = req.getParameter("type");
     Item item = ItemFactory.createEmptyItem(ItemType.getTypeFromTypeNumber(Integer.parseInt(type)));
     if (item == null) return;

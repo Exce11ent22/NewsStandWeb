@@ -1,6 +1,5 @@
 package web;
 
-import lombok.var;
 import repository.persistence.RepositoryInDB;
 
 import javax.servlet.ServletContext;
